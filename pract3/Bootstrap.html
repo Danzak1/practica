@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Обучающее пособие по Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bs-primary: #4361ee;
+      --bs-secondary: #6c757d;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Ubuntu', sans-serif;
+      letter-spacing: -0.5px;
+    }
+    
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: linear-gradient(45deg, #4361ee, #3a0ca3);
+      padding: 0.8rem 0;
+    }
+    
+    h2 {
+      color: var(--bs-primary);
+      border-bottom: 3px solid var(--bs-primary);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background: var(--bs-primary);
+      border-radius: 50%;
+    }
+    
+    .btn {
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      padding: 0.6rem 1.5rem;
+      font-weight: 600;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(67,97,238,0.3);
+    }
+    
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    
+    .card-img-top {
+      border-radius: 15px 15px 0 0;
+      height: 180px;
+      object-fit: cover;
+    }
+    
+    .alert-info {
+      background: #e9f5ff;
+      border-color: #b8daff;
+      color: #004085;
+      border-radius: 12px;
+      border-left: 4px solid var(--bs-primary);
+    }
+    
+    footer {
+      border-top: 3px solid var(--bs-primary);
+      margin-top: 4rem !important;
+      background: linear-gradient(45deg, #3a0ca3, #4361ee);
+    }
+    
+    .nav-tabs .nav-link {
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .offcanvas {
+      border-right: 3px solid var(--bs-primary);
+    }
+    
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.5);
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <nav class="navbar navbar-dark mb-4">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1 fs-2 fw-bold">🚀 Bootstrap Guide</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- ========== РАЗДЕЛ 1: Меню ========== -->
+    <section class="mb-5">
+      <h2>1. Меню (Навигация)</h2>
+      <p class="lead text-muted mb-4">Bootstrap предоставляет различные компоненты для создания современной навигации.</p>
+
+      <h4 class="mt-4">1.1 Navbar (Основное меню)</h4>
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.navbar</code> — основной контейнер меню</li>
+          <li><code>.navbar-expand-lg</code> — адаптивное поведение</li>
+          <li><code>.nav-item</code>, <code>.nav-link</code> — элементы навигации</li>
+        </ul>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 rounded-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="#">Логотип</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">О нас</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Услуги</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Дизайн</a></li>
+                  <li><a class="dropdown-item" href="#">Разработка</a></li>
+                </ul>
+              </li>
+            </ul>
+            <button class="btn btn-primary">Войти</button>
+          </div>
+        </div>
+      </nav>
+
+      <h4 class="mt-4">1.2 Вкладки (Tabs)</h4>
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.nav-tabs</code> — стиль вкладок</li>
+          <li><code>.nav-link.active</code> — активная вкладка</li>
+        </ul>
+      </div>
+      <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link active" href="#">Вкладка 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Вкладка 2</a></li>
+        <li class="nav-item"><a class="nav-link disabled">Недоступно</a></li>
+      </ul>
+
+      <h4 class="mt-4">1.3 Таблетки (Pills)</h4>
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.nav-pills</code> — стиль таблеток</li>
+          <li><code>.rounded-pill</code> — скруглённая форма</li>
+        </ul>
+      </div>
+      <ul class="nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link active rounded-pill" href="#">Pill 1</a></li>
+        <li class="nav-item"><a class="nav-link rounded-pill" href="#">Pill 2</a></li>
+      </ul>
+
+      <h4 class="mt-4">1.4 Offcanvas</h4>
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.offcanvas</code> — боковая панель</li>
+          <li><code>.offcanvas-start</code> — позиция слева</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary mb-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">Открыть меню</button>
+      <div class="offcanvas offcanvas-start" id="offcanvas">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Меню</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Это пример offcanvas-меню.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== РАЗДЕЛ 2: Кнопки ========== -->
+    <section class="mb-5">
+      <h2>2. Кнопки</h2>
+      <p class="lead text-muted mb-4">Разнообразные стили и варианты кнопок для любого использования.</p>
+
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.btn-*</code> — цветовые варианты</li>
+          <li><code>.btn-outline-*</code> — контурные стили</li>
+          <li><code>.btn-lg/.btn-sm</code> — размеры</li>
+        </ul>
+      </div>
+
+      <h4 class="mt-4">2.1 Цветовые стили</h4>
+      <div class="mb-4 d-flex gap-2 flex-wrap">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-info">Info</button>
+        <button class="btn btn-dark">Dark</button>
+      </div>
+
+      <h4 class="mt-4">2.2 Контурные кнопки</h4>
+      <div class="mb-4 d-flex gap-2 flex-wrap">
+        <button class="btn btn-outline-primary">Outline Primary</button>
+        <button class="btn btn-outline-danger">Outline Danger</button>
+        <button class="btn btn-outline-success">Outline Success</button>
+      </div>
+
+      <h4 class="mt-4">2.3 Размеры</h4>
+      <div class="mb-4 d-flex gap-2 align-items-center flex-wrap">
+        <button class="btn btn-primary btn-sm">Маленькая</button>
+        <button class="btn btn-primary">Обычная</button>
+        <button class="btn btn-primary btn-lg">Большая</button>
+      </div>
+
+      <h4 class="mt-4">2.4 Блочная кнопка</h4>
+      <div class="d-grid gap-2 mb-4">
+        <button class="btn btn-success">Блочная кнопка</button>
+      </div>
+
+      <h4 class="mt-4">2.5 Состояния</h4>
+      <div class="d-flex gap-2 flex-wrap">
+        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btn-check">Переключатель</label>
+        <button class="btn btn-secondary disabled">Отключённая</button>
+      </div>
+    </section>
+
+    <!-- ========== РАЗДЕЛ 3: Карточки ========== -->
+    <section class="mb-5">
+      <h2>3. Карточки</h2>
+      <p class="lead text-muted mb-4">Гибкие и расширяемые контейнеры для контента.</p>
+
+      <div class="alert alert-info">
+        <strong>Классы:</strong>
+        <ul class="mb-0">
+          <li><code>.card</code> — основной контейнер</li>
+          <li><code>.card-body</code> — содержимое карточки</li>
+          <li><code>.card-img-top</code> — изображение сверху</li>
+        </ul>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h4 class="mt-3">3.1 Простая карточка</h4>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Заголовок</h5>
+              <p class="card-text">Пример текста карточки с кратким описанием.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h4 class="mt-3">3.2 С изображением</h4>
+          <div class="card">
+            <img src="https://source.unsplash.com/random/400x200" class="card-img-top" alt="Пример">
+            <div class="card-body">
+              <h5 class="card-title">Карточка с изображением</h5>
+              <p class="card-text">Некоторый пример текста для описания изображения.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h4 class="mt-3">3.3 С цветным фоном</h4>
+          <div class="card text-white bg-primary">
+            <div class="card-header">Шапка</div>
+            <div class="card-body">
+              <p class="card-text">Яркая карточка с цветным фоном и контрастным текстом.</p>
+            </div>
+            <div class="card-footer">Футер</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h4 class="mt-3">3.4 Горизонтальная</h4>
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://source.unsplash.com/random/200x200" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Горизонтальный макет</h5>
+                  <p class="card-text">Комбинированный макет с изображением и текстом.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h4 class="mt-3">3.5 Минималистичная</h4>
+          <div class="card bg-light border-0">
+            <div class="card-body">
+              <h5 class="card-title">Простой дизайн</h5>
+              <p class="card-text">Чистый макет без границ с мягким фоном.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="text-white text-center py-4 mt-5">
+    <div class="container">
+      <small>© 2024 Обучающее пособие по Bootstrap 5. Все права защищены.</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
